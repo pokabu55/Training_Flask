@@ -6,4 +6,7 @@ flaskのトレーニング用
 * `. venv/bin/activate` と打つ または `source venv/bin/activate`
 * 手動で venv を無効にする場合は
 * `()venv $ deactivate` と打つ
+
+## 参考
+* [ここ](https://tech-diary.net/flask-introduction/)を参考にしてます
 * 
