@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Flask
 
 app = Flask(__name__)
@@ -6,6 +7,8 @@ app = Flask(__name__)
 def index():
     return "Hello, Flaskbook!"
 
-@app.route("/hello")
+@app.route("/hello",  # Rule
+    methods=["Get"],  # Methods
+    endpoint="hello-endpoint") # Endpoint
 def hello():
     return "hello, world!!"
