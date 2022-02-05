@@ -7,13 +7,14 @@ app = Flask(__name__)
 def index():
     return "Hello, Flaskbook!"
 
-@app.route("/hello",  # Rule
-    methods=["Get"],  # Methods
+@app.route("/hello/<name>",  # Rule
+    methods=["Get","Post"],  # Methods
     endpoint="hello-endpoint") # Endpoint
-def hello():
-    return "hello, world!!"
+def hello(name):
+    # f-string による書き方
+    return f"Hello, {name}!"
 
-# Flask2 から @app.route(methods=["Get"]) を下記のように書けるようになった
+# Flask2 から @app.route(methods=["Get","Post"]) を下記のように書けるようになった
 @app.get("/flask2")
 @app.post("/flask2")
 def hello():
