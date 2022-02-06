@@ -1,6 +1,6 @@
 from cgitb import reset
 from crypt import methods
-from flask import Flask, render_template, url_for, current_app, g, request
+from flask import Flask, render_template, url_for, current_app, g, request, redirect
 
 app = Flask(__name__)
 
@@ -54,3 +54,17 @@ with app.test_request_context("/users?updated=true"):
     # true が出力される
     print(request.args.get("updated"))
 
+# 1.3章 問い合わせフォームを作成する
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+@app.route("/contact/complete", methods=["GET", "POST"])
+def contact_complete():
+    if request.method == "POST":
+        # メールを送る（後に実装）
+
+        # contactエンドポイントへリダイレクトする
+        return redirect(url_for("contact_complete"))
+
+    return render_template("contact_complete.html")
