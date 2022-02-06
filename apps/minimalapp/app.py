@@ -1,5 +1,6 @@
+from cgitb import reset
 from crypt import methods
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, current_app, g, request
 
 app = Flask(__name__)
 
@@ -34,3 +35,22 @@ with app.test_request_context():
 @app.post("/flask2")
 def hello():
     return "flask2 specification"
+
+# この呼び方はエラー
+# print(current_app)
+
+# アプリケーションコンテキストを取得してスタックへプッシュ
+ctx = app.app_context()
+ctx.push()
+
+# current_app にアクセス可能になる
+print(current_app.name)
+
+# グローバルなテンポラリ領域に値を設定する
+g.connection = "connection"
+print(g.connection)
+
+with app.test_request_context("/users?updated=true"):
+    # true が出力される
+    print(request.args.get("updated"))
+
