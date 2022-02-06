@@ -3,9 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <title>Name</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='style.css') }}"
+        /link>
     </head>
 
     <body>
+        <!--- {{name}} を追加する -->
         <h1>Name:{{name}}</h1>
     </body>
 </html>
