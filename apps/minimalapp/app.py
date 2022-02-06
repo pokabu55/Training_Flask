@@ -13,8 +13,21 @@ from flask import (
     flash
 )
 from email_validator import validate_email, EmailNotValidError
+import logging
+from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
+
+# SECRET_KEY を追加する
+app.config["SECRET_KEY"] = "2AZSMss3p5QPbcY2hBsJ"
+
+# ログレベルを設定する
+app.logger.setLevel(logging.DEBUG)
+
+# リダイレクトを中断しないようにする
+app.config["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
+# DebugToolbarExtension にアプリケーションをセットする
+toolbar = DebugToolbarExtension(app)
 
 @app.route('/')
 def index():
@@ -110,5 +123,3 @@ def contact_complete():
 
     return render_template("contact_complete.html")
 
-# SECRET_KEY を追加する
-app.config["SECRET_KEY"] = "2AZSMss3p5QPbcY2hBsJ"
