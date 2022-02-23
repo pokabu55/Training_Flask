@@ -23,4 +23,4 @@ flaskのトレーニング用
 
 ## 参考
 * [ここ](https://tech-diary.net/flask-introduction/)を参考にしてます
-* 
+* [参考図書のgitリポジトリ](https://github.com/ml-flaskbook/flaskbook)
