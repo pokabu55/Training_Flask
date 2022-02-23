@@ -116,6 +116,7 @@ def contact_complete():
             return redirect(url_for("contact"))
 
         # メールを送る（後に実装）
+        # google の設定変更が必要なのでスキップ
 
         # 問い合わせ完了エンドポイントへリダイレクトする
         flash("お問い合わせありがとうございました。")
